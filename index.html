@@ -46,7 +46,7 @@ body{overflow-x:clip}
 .agenda--approval{padding-top:0}
 .agenda--approval .agenda__inner{grid-template-columns:minmax(0,1fr)}
 .agenda--approval h2{max-width:none}
-@media (min-width:900px){.agenda--approval h2{white-space:nowrap}}
+@media (min-width:900px){#approval .agenda__copy > h2:first-child{white-space:nowrap}.agenda p.one-line{max-width:none;white-space:nowrap}}
 .agenda .label{font:400 13px/1.4 var(--f-type);letter-spacing:.14em;text-transform:uppercase;color:var(--rust);margin:clamp(28px,4vh,44px) 0 14px}
 .agenda__media--logo{grid-column:auto;aspect-ratio:auto;display:block;background:var(--paper);margin:0;max-width:900px}
 .agenda--approval .agenda__media--logo{margin-top:0}
@@ -437,7 +437,7 @@ body{overflow-x:clip}
       <div class="agenda__copy">
       <h2 class="js-split">Everything he needs. Nothing he’ll skim.</h2>
       <p class="js-split">Care, fit, the guarantee, returns, and his place in the first run, bound like a file, tabbed like a binder, separated by tracing-paper drawings of the last.</p>
-      <p class="sign js-split">The returns slip comes in triplicate. Because some habits are worth keeping.</p>
+      <p class="sign one-line js-split">The returns slip comes in triplicate. Because some habits are worth keeping.</p>
       <figure class="agenda__media agenda__media--wide" style="aspect-ratio:1671/941"><img src="assets/img/annex-file.webp" alt="The Wearer's Copy file: cover stamped Received, opened to a tracing-paper drawing of the last and Annexure A, the care memo"></figure>
       <figure class="agenda__media agenda__media--wide" style="aspect-ratio:1672/941"><img src="assets/img/annex-set.webp" alt="The full booklet laid out: cover, contents, tracing sheets and Annexures A to E, fit note, guarantee, triplicate returns slip and early access"></figure>
       </div>
@@ -447,9 +447,9 @@ body{overflow-x:clip}
     <div class="agenda__inner">
       <p class="eyebrow js-type">Item 08 · Circulated</p>
       <div class="agenda__copy">
-      <h2 class="js-split">Seven posters. Seven pieces of the working day.</h2>
+      <h2 class="js-split">Seven posters.<br>Seven pieces of the working day.</h2>
       <p class="js-split">Each poster borrows one document from the paper trail he already lives in: the spreadsheet, the timesheet, the edit, the attestation, the seating plan, the register, the draft. Then it says one true thing about the shoe in that document’s language.</p>
-      <p class="sign js-split">No faces to aspire to. No slogans to live up to. Just the working day, and a shoe that keeps up with it.</p>
+      <p class="sign one-line js-split">No faces to aspire to. No slogans to live up to.<br>Just the working day, and a shoe that keeps up with it.</p>
       <div class="duo">
         <figure class="agenda__media duo__item" style="--ar:0.6667;aspect-ratio:1024/1536"><img src="assets/img/poster-ink.webp" alt="Poster, the attestation: a brown Derby beside its violet scanned impression, file GI/26/LF-02, specs redacted, Ink still wet"></figure>
         <figure class="agenda__media duo__item" style="--ar:0.7064;aspect-ratio:1054/1492"><img src="assets/img/poster-sheet-v2.jpg" alt="Poster, the spreadsheet: standard European last versus wider Indian last GI-01, a #### cell, Wide fit. Indian last."></figure>
@@ -482,7 +482,7 @@ body{overflow-x:clip}
       <p class="eyebrow js-type">Item 09 · Any other business</p>
       <div class="agenda__copy">
       <h2 class="js-split">That’s all for today.</h2>
-      <p class="js-split">Good Indian is a good shoe, made in India, for the way Indians actually live and work.</p>
+      <p class="one-line js-split">Good Indian is a good shoe, made in India, for the way Indians actually live and work.</p>
       <p class="sign js-split">Put them on. Walk a day. The name explains itself.</p>
       <figure class="agenda__media agenda__media--wide" style="aspect-ratio:1351/1164"><img src="assets/img/shutter-end.webp" alt="The Good Indian Blake Stitched stamp painted on a violet roller shutter"></figure>
       </div>
