@@ -110,10 +110,31 @@ body{overflow-x:clip}
 .duo{display:flex;gap:clamp(8px,1vw,16px);width:100vw;margin:clamp(40px,7vh,96px) 0 0 calc(-1 * var(--gutter))}
 .duo__item{grid-column:auto;flex:var(--ar) 1 0;min-width:0;margin:0}
 .duo__item img{inset:0;height:100%;transform:none}
-@media (max-width:700px){.duo{flex-direction:column}.duo__item{flex:none;width:100%}}
+@media (max-width:700px){.duo{flex-direction:column;gap:clamp(40px,7vh,96px)}.duo__item{flex:none;width:100%}}
+/* phones: the palette and type specimen are too detailed to shrink to 375px, so they scroll sideways at a readable size */
+.swipe-hint{display:none}
+@media (max-width:700px){
+  .palette{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .palette::-webkit-scrollbar{display:none}
+  .palette .colours,.palette.specimen img{width:240vw;max-width:none}
+  .agenda p.swipe-hint{display:block;max-width:none;font:400 12px/1.4 var(--f-type);letter-spacing:.14em;text-transform:uppercase;color:var(--rust);margin:14px 0 0}
+}
 .specimen{margin-top:clamp(56px,9vh,120px)}
 .specimen img{display:block;width:100%;height:auto}
 #aob{padding-bottom:0}
+/* ---------- footer ---------- */
+.site-foot{background:#f8f6f0;padding:clamp(24px,4vh,48px) 0}
+.site-foot__full{display:block;width:100%;height:auto}
+.site-foot__stack{display:none}
+@media (max-width:700px){
+  .site-foot{padding:48px 20px 40px}
+  .site-foot__full{display:none}
+  .site-foot__stack{display:flex;flex-direction:column;align-items:center;gap:28px}
+  .site-foot__stack img{display:block;height:auto}
+  .site-foot__stack img:nth-child(1){width:62%}
+  .site-foot__stack img:nth-child(2){width:78%}
+  .site-foot__stack img:nth-child(3){width:70%}
+}
 #colours{padding-bottom:clamp(120px,18vh,200px)}
 .palette{margin:clamp(40px,7vh,96px) 0 0 calc(-1 * var(--gutter));width:100vw;max-width:none}
 .colours{display:block;width:100%;height:auto}
@@ -401,6 +422,7 @@ body{overflow-x:clip}
   <text class="cl5" transform="translate(366.85 398.26) rotate(90)"><tspan class="cl8"><tspan x="0" y="0">Manila &amp; Xerox white</tspan></tspan><tspan class="cl4"><tspan x="0" y="32.4">the ground everything is written on.</tspan></tspan></text>
   <text class="cl5" transform="translate(1476.3916 399.0376) rotate(90)"><tspan class="cl9"><tspan x="0" y="0">ALMIRAH GREEN</tspan></tspan><tspan class="cl3"><tspan x="0" y="32.4">Where every file ends up.</tspan></tspan></text>
 </svg></figure>
+      <p class="swipe-hint" aria-hidden="true">Swipe to see all →</p>
       </div>
     </div>
   </section>
@@ -412,6 +434,7 @@ body{overflow-x:clip}
       <p class="js-split">A typewriter face for everything factual: specs, files, numbers. A clean architectural sans for the brand itself.</p>
       <p class="sign js-split">When the ink bleeds, it’s <span class="bleed">on purpose.</span></p>
       <figure class="palette specimen"><img src="assets/brand/fonts.svg" alt="Type specimen: Overused Grotesk, American Typewriter and Bolde Rough, uppercase, lowercase, numerals and symbols"></figure>
+      <p class="swipe-hint" aria-hidden="true">Swipe to see all →</p>
       </div>
     </div>
   </section>
@@ -488,6 +511,15 @@ body{overflow-x:clip}
       </div>
     </div>
   </section>
+
+  <footer class="site-foot">
+    <img class="site-foot__full" src="assets/brand/footer.svg" alt="Designed by Black Prism. Good Indian. Filed 2026 with the stamp.">
+    <div class="site-foot__stack" aria-hidden="true">
+      <img src="assets/brand/footer.svg#svgView(viewBox(690,55,540,115))" alt="">
+      <img src="assets/brand/footer.svg#svgView(viewBox(1415,100,480,36))" alt="">
+      <img src="assets/brand/footer.svg#svgView(viewBox(48,70,450,85))" alt="">
+    </div>
+  </footer>
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
