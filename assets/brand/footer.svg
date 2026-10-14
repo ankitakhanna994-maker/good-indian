@@ -23,7 +23,7 @@
       .st4 {
         fill: #010101;
         font-family: AmericanTypewriter, 'American Typewriter';
-        font-size: 17.59px;
+        font-size: 24px;
         letter-spacing: .24em;
       }
 
@@ -114,5 +114,5 @@
     <polyline class="st1" points="119.48 148.54 68.27 148.54 61.26 148.54 54.62 141.9 54.62 83.43 61.26 76.79"/>
     <path class="st1" d="M491.23,141.9l-6.64,6.63H61.27c-2.59-2.59-4.05-4.05-6.64-6.64l.13-58.49,6.64-6.63h71.91s351.29,0,351.29,0l6.64,6.63v58.49Z"/>
   </g>
-  <text class="st4" transform="translate(1430.5918 126.0361)"><tspan x="0" y="0">Filed 2026 with the stamp</tspan></text>
+  <text class="st4" text-anchor="end" transform="translate(1866 129)"><tspan x="0" y="0">Filed 2026</tspan></text>
 </svg>
