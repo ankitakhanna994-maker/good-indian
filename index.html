@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Good Indian — Visual Identity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cutive&family=Hanken+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.css">
+<style>
+:root{
+  --paper:#f7f5ef; --ink:#1d1a19; --violet:#302666; --rust:#9b4121;
+  --f-type:"American Typewriter","AmericanTypewriter","Cutive",Georgia,serif;
+  --f-body:"Overused Grotesk","Hanken Grotesk",system-ui,sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1); /* Figma smart-animate "gentle" */
+  --gutter:clamp(20px,5vw,96px);
+}
+html,body{margin:0;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased}
+body{overflow-x:clip}
+.hero{position:relative;height:min(100vh,56.25vw);height:min(100svh,56.25vw);overflow:hidden}
+.hero iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;pointer-events:none}
+
+/* ---------- ITEM 01 · AGENDA ----------
+   Type scale (16px root, ~1.25–1.5 modular steps, common editorial web practice):
+   eyebrow 13px · H2 40–72px fluid · lead 20–24px · body 17–19px · line length ≤ 62ch */
+.agenda{position:relative;padding:clamp(48px,8vh,96px) var(--gutter) clamp(120px,18vh,200px)}
+.agenda__inner{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);column-gap:clamp(32px,6vw,120px);align-items:start;max-width:1600px;text-align:left}
+.agenda__inner>.eyebrow{grid-column:1/-1}
+.agenda__copy{grid-column:1}
+.agenda__media{grid-column:2;margin:0;position:relative;overflow:hidden;aspect-ratio:1/1;clip-path:inset(100% 0 0 0)}
+.agenda__media img{position:absolute;inset:-8% 0;width:100%;height:116%;object-fit:cover;transform:scale(1.15)}
+@media (max-width:860px){.agenda__inner{grid-template-columns:1fr}.agenda__media{grid-column:1;margin-top:40px}}
+.agenda .eyebrow{font:400 13px/1.4 var(--f-type);letter-spacing:.14em;text-transform:uppercase;color:var(--violet);margin:0 0 clamp(28px,4vh,44px);display:flex;align-items:center;gap:14px}
+.eyebrow::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--rust);flex:none;transform:scale(0);transition:transform .7s var(--ease) .1s}
+.eyebrow.is-in::before{transform:scale(1)}
+.agenda h2{font:400 clamp(36px,4.68vw,64.8px)/1.08 var(--f-type);letter-spacing:-.02em;color:var(--violet);margin:0 0 clamp(40px,6vh,64px);max-width:17ch}
+.agenda p{font:400 clamp(20px,1.7vw,24px)/1.45 var(--f-body);letter-spacing:0;margin:0 0 1.2em;max-width:56ch;color:var(--ink)}
+.agenda p.lead{font-size:clamp(20px,1.7vw,24px);line-height:1.45;max-width:56ch;color:var(--ink)}
+.agenda p.sign{font-family:var(--f-type);font-size:clamp(20px,1.7vw,24px);color:var(--violet);margin-top:2em}
+.line{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
+.line > *{display:inline-block;will-change:transform}
+.hero{z-index:0}
+.agenda{z-index:1;background:var(--paper)}
+/* ---------- ITEM 02 · logo, filled in ---------- */
+.agenda--approval{padding-top:0}
+.agenda--approval .agenda__inner{grid-template-columns:minmax(0,1fr)}
+.agenda--approval h2{max-width:none}
+@media (min-width:900px){.agenda--approval h2{white-space:nowrap}}
+.agenda .label{font:400 13px/1.4 var(--f-type);letter-spacing:.14em;text-transform:uppercase;color:var(--rust);margin:clamp(28px,4vh,44px) 0 14px}
+.agenda__media--logo{grid-column:auto;aspect-ratio:auto;display:block;background:var(--paper);margin:0;max-width:900px}
+.agenda--approval .agenda__media--logo{margin-top:0}
+/* secondary + primary at the same scale: punch holes render at the same size.
+   primary width = secondary width × (721.9/403.49) × (13.33/13.83) ≈ 1.7245 */
+.pair{--sw:min(260px,20vw);display:grid;grid-template-columns:var(--sw) calc(var(--sw) * 1.7245);grid-template-rows:auto auto;column-gap:clamp(80px,20vw,300px);align-items:start}
+.pair .label{margin-top:clamp(28px,4vh,44px)}
+.pair__l1{grid-column:1;grid-row:1}
+.pair__l2{grid-column:2;grid-row:1}
+.agenda__media--stepped{grid-column:1;grid-row:2;width:100%;max-width:none}
+.pair__img{grid-column:2;grid-row:2;align-self:center;width:100%;height:auto;display:block}
+.pair__primary{opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .9s var(--ease),transform 1.2s var(--ease),filter .9s var(--ease)}
+.pair__primary.is-on{opacity:1;transform:none;filter:none}
+@media (max-width:760px){.pair{--sw:50vw;grid-template-columns:1fr}.pair__l1,.pair__l2,.agenda__media--stepped,.pair__img{grid-column:1;grid-row:auto}.agenda__media--stepped{width:var(--sw)}.pair__img{width:calc(var(--sw) * 1.7245);max-width:100%}.pair__l2{order:3}.pair__img{order:4}}
+.agenda p.usage{grid-column:1/-1;grid-row:3;margin:clamp(28px,4vh,44px) 0 0;padding-top:14px;border-top:1px solid rgba(155,65,33,.35);max-width:none;font-size:15px;line-height:1.5;color:var(--ink);display:flex;gap:18px;align-items:baseline}
+.agenda p.usage span{font:400 13px/1.4 var(--f-type);letter-spacing:.14em;text-transform:uppercase;color:var(--rust);flex:none}
+@media (max-width:760px){.agenda p.usage{grid-row:auto;order:5;flex-direction:column;gap:6px}}
+.agenda p.usage--show{border-top:1px solid rgba(155,65,33,.35);margin-top:0}
+/* symbol at the same scale as the wordmarks: hole r 48.66 in a 1080 box vs 13.33 in the 403.49 stepped box */
+.symbol{--sw:min(260px,20vw)}
+.symbol .label{margin-top:clamp(28px,4vh,44px)}
+.gi{display:block;width:calc(var(--sw) * 0.7333);height:auto;overflow:visible}
+.gi__h{transform-box:fill-box;transform-origin:center}
+/* all three at one scale: widths are multiples of the stepped width so punch holes match */
+.trio{--sw:min(260px,18vw);display:grid;grid-template-columns:auto auto auto;grid-template-rows:auto 1fr;column-gap:clamp(48px,7vw,140px);justify-content:start}
+.trio>div{display:grid;grid-template-rows:subgrid;grid-row:span 2}
+.trio .symbol{--sw:inherit}
+.trio>div>svg,.trio>div>img{align-self:center;display:block;height:auto}
+.trio__primary{width:calc(var(--sw) * 1.7245)}
+.trio__secondary{width:var(--sw)}
+.trio__later{opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .9s var(--ease),transform 1.2s var(--ease),filter .9s var(--ease)}
+.trio__later.is-on{opacity:1;transform:none;filter:none}
+.trio__later:nth-child(3){transition-delay:.15s}
+@media (max-width:860px){.trio{--sw:44vw;grid-template-columns:1fr;grid-template-rows:none}.trio>div{grid-row:auto;display:block}}
+/* ---------- ITEM 03 · stamps (timings from the stamp master) ---------- */
+.agenda--attested h2{white-space:normal}
+.stamps{--s:min(340px,28vw);display:flex;justify-content:center;gap:calc(var(--s) * .2727);margin:clamp(40px,6vh,72px) 0 clamp(8px,2vh,24px)}
+.stamps .slot{position:relative;width:var(--s);height:var(--s)}
+.stamps .slot img{position:absolute;inset:0;width:100%;height:100%;opacity:0;mix-blend-mode:multiply;transform:rotate(var(--r))}
+.stamps.run .a img{animation:st-hit .9s .6s forwards}
+.stamps.run .b img{animation:st-hit .9s 1.9s forwards}
+.stamps.run .a{animation:st-jolt .28s .6s}.stamps.run .b{animation:st-jolt .28s 1.9s}
+@keyframes st-hit{0%{opacity:1;transform:rotate(var(--r)) scale(1.035);filter:contrast(1.25) brightness(.82)}12%{opacity:1;transform:rotate(var(--r)) scale(.995)}100%{opacity:1;transform:rotate(var(--r)) scale(1);filter:none}}
+@keyframes st-jolt{0%{transform:translate(0,0)}25%{transform:translate(1px,4px)}55%{transform:translate(-1px,-1px)}100%{transform:none}}
+@media (max-width:700px){.stamps{--s:42vw}}
+.received{margin:clamp(40px,6vh,72px) auto clamp(8px,2vh,24px);width:min(620px,86%)}
+.received img{display:block;width:100%;height:auto}
+@media (prefers-reduced-motion:reduce){.stamps .slot img{opacity:1}}
+/* ---------- ITEM 04 · palette ---------- */
+/* ---------- ITEM 05 · ink bleed (same 3-layer bleed as the scan-drift opening) ---------- */
+.bleed .l{position:relative;display:inline-block}
+.bleed .l i{position:absolute;inset:0;font-style:normal;opacity:0;animation:var(--a) 6s ease-in-out infinite;animation-delay:calc(var(--k) * .14s)}
+.bleed .l i.a{filter:url(#vink1);--a:i1}.bleed .l i.b{filter:url(#vink2);--a:i2}.bleed .l i.c{filter:url(#vink3);--a:i3}
+@keyframes i1{0%,10%{opacity:0}14%,46%{opacity:1}50%,100%{opacity:0}}
+@keyframes i2{0%,13%{opacity:0}18%,42%{opacity:1}47%,100%{opacity:0}}
+@keyframes i3{0%,16%{opacity:0}22%,38%{opacity:1}44%,100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.bleed .l i{animation:none}}
+.agenda__media--wide{grid-column:auto;aspect-ratio:1536/1024;width:100vw;max-width:none;margin:clamp(40px,7vh,96px) 0 0 calc(-1 * var(--gutter))}
+.agenda__media--wide img{inset:0;height:100%;transform:none}
+/* two images side by side, equal height, neither cropped: each grows by its aspect ratio */
+.duo{display:flex;gap:clamp(8px,1vw,16px);width:100vw;margin:clamp(40px,7vh,96px) 0 0 calc(-1 * var(--gutter))}
+.duo__item{grid-column:auto;flex:var(--ar) 1 0;min-width:0;margin:0}
+.duo__item img{inset:0;height:100%;transform:none}
+@media (max-width:700px){.duo{flex-direction:column}.duo__item{flex:none;width:100%}}
+.specimen{margin-top:clamp(56px,9vh,120px)}
+.specimen img{display:block;width:100%;height:auto}
+#aob{padding-bottom:0}
+#colours{padding-bottom:clamp(120px,18vh,200px)}
+.palette{margin:clamp(40px,7vh,96px) 0 0 calc(-1 * var(--gutter));width:100vw;max-width:none}
+.colours{display:block;width:100%;height:auto}
+.colours text{font-family:"Gravesend Sans","Overused Grotesk","Hanken Grotesk",sans-serif}
+.agenda .eyebrow--sub{margin-top:clamp(80px,12vh,140px)}
+.agenda p.after{margin-top:clamp(28px,4vh,44px)}
+.logo-typed{display:block;width:100%;height:auto;overflow:visible}
+.logo-typed .grid line{stroke:#302666;stroke-width:1.6;stroke-dasharray:800;stroke-dashoffset:800}
+.logo-typed .k{fill:#302666;opacity:0}
+.logo-typed .hole{fill:#9b4121;opacity:0;transform-box:fill-box;transform-origin:center}
+.logo-typed .die{fill:#302666;opacity:0;transform-box:fill-box;transform-origin:center}
+.logo-typed.is-playing .grid line{animation:lt-draw .9s cubic-bezier(.6,0,.2,1) forwards;animation-delay:calc(var(--j)*.05s)}
+.logo-typed.is-playing .grid{animation:lt-gridfade 1s 5.8s forwards}
+.logo-typed.is-playing .k{animation:lt-type .12s cubic-bezier(.2,2,.4,1) forwards;animation-delay:calc(1.5s + var(--i)*.27s)}
+.logo-typed.is-playing .hole{animation:lt-punch .5s 4.6s forwards}
+.logo-typed.is-playing .die{animation:lt-die .5s 4.35s forwards}
+.logo-typed.is-playing .sheet{animation:lt-thud .35s 4.62s}
+@keyframes lt-draw{to{stroke-dashoffset:0}}
+@keyframes lt-type{0%{opacity:1;transform:translateY(-4px)}100%{opacity:1;transform:none}}
+@keyframes lt-die{0%{opacity:0;transform:scale(1.6)}50%{opacity:.18;transform:scale(1.05)}100%{opacity:0;transform:scale(1)}}
+@keyframes lt-punch{0%{opacity:0;transform:scale(.2)}35%{opacity:1;transform:scale(1.12)}100%{opacity:1;transform:scale(1)}}
+@keyframes lt-thud{0%{transform:none}30%{transform:translateY(3px)}100%{transform:none}}
+@keyframes lt-gridfade{to{opacity:0}}
+@media (prefers-reduced-motion:reduce){.logo-typed .k,.logo-typed .hole{opacity:1}.logo-typed .grid{display:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="vink1" x="-80%" y="-80%" width="260%" height="260%" color-interpolation-filters="sRGB"><feMorphology in="SourceAlpha" operator="dilate" radius=".8" result="m"/><feTurbulence type="fractalNoise" baseFrequency=".35" numOctaves="2" seed="12" result="n"/><feDisplacementMap in="m" in2="n" scale="1.4" xChannelSelector="R" yChannelSelector="G" result="d"/><feGaussianBlur in="d" stdDeviation="1.2" result="b"/><feComponentTransfer in="b" result="th"><feFuncA type="table" tableValues="0 0 .4 1 1 1"/></feComponentTransfer><feFlood flood-color="#302666"/><feComposite in2="th" operator="in"/></filter>
+  <filter id="vink2" x="-80%" y="-80%" width="260%" height="260%" color-interpolation-filters="sRGB"><feMorphology in="SourceAlpha" operator="dilate" radius="1.8" result="m"/><feTurbulence type="fractalNoise" baseFrequency=".35" numOctaves="2" seed="30" result="n"/><feDisplacementMap in="m" in2="n" scale="3" xChannelSelector="R" yChannelSelector="G" result="d"/><feGaussianBlur in="d" stdDeviation="2.2" result="b"/><feComponentTransfer in="b" result="th"><feFuncA type="table" tableValues="0 0 .4 1 1 1"/></feComponentTransfer><feFlood flood-color="#302666"/><feComposite in2="th" operator="in"/></filter>
+  <filter id="vink3" x="-80%" y="-80%" width="260%" height="260%" color-interpolation-filters="sRGB"><feMorphology in="SourceAlpha" operator="dilate" radius="3" result="m"/><feTurbulence type="fractalNoise" baseFrequency=".35" numOctaves="2" seed="55" result="n"/><feDisplacementMap in="m" in2="n" scale="5" xChannelSelector="R" yChannelSelector="G" result="d"/><feGaussianBlur in="d" stdDeviation="3.5" result="b"/><feComponentTransfer in="b" result="th"><feFuncA type="table" tableValues="0 0 .4 1 1 1"/></feComponentTransfer><feFlood flood-color="#302666"/><feComposite in2="th" operator="in"/></filter>
+</svg>
+<main>
+  <section class="hero" id="hero">
+    <iframe src="hero.html" title="Good Indian — Scan Drift" scrolling="no"></iframe>
+  </section>
+
+  <section class="agenda" id="agenda">
+    <div class="agenda__inner">
+      <p class="eyebrow js-type">Item 01 · Agenda</p>
+      <div class="agenda__copy">
+      <h2 class="js-split">Built from the paper trail of a working&nbsp;day.</h2>
+      <p class="lead js-split">The attested copy. The stamp that makes it official. The memo nobody reads twice. The spreadsheet that runs the quarter. The file that moves from desk to desk.</p>
+      <p class="js-split">This is the material of Indian working life: unglamorous, precise, quietly everywhere. Good Indian borrows its look, its rhythm and its honesty. Never its bureaucracy.</p>
+      <p class="sign js-split">The result doesn’t dress up as an office. It just feels like it’s been somewhere.</p>
+      </div>
+      <figure class="agenda__media"><img src="assets/img/paper-trail.webp" alt="The paper trail of a working day: attested copies, a stamp, an internal memo, a to-do list, a note for approval, a quarterly report spreadsheet and government files"></figure>
+    </div>
+  </section>
+  <section class="agenda agenda--approval" id="approval">
+    <div class="agenda__inner">
+      <p class="eyebrow js-type">Item 02 · For your approval</p>
+      <div class="agenda__copy">
+      <h2 class="js-split">Filled in, one character per box.</h2>
+      <p class="lead js-split">Every Indian professional has filled in a form that says: write in BLOCK LETTERS, one character per box.</p>
+      <p class="js-split">The Good Indian wordmark is set the same way: capitals on an equal grid, each letter given its own box of space.</p>
+      <p class="sign js-split">Calm, official, filled in carefully.</p>
+      <p class="label">Primary wordmark logo</p>
+      <figure class="agenda__media agenda__media--logo"><svg class="logo-typed" viewBox="0 0 718 188" aria-label="Good Indian">
+<g class="sheet"><g class="grid" fill="none"><line x1="7" y1="6" x2="7" y2="182" style="--j:0"/><line x1="71" y1="6" x2="71" y2="182" style="--j:1"/><line x1="135" y1="6" x2="135" y2="182" style="--j:2"/><line x1="199" y1="6" x2="199" y2="182" style="--j:3"/><line x1="263" y1="6" x2="263" y2="182" style="--j:4"/><line x1="327" y1="6" x2="327" y2="182" style="--j:5"/><line x1="391" y1="6" x2="391" y2="182" style="--j:6"/><line x1="455" y1="6" x2="455" y2="182" style="--j:7"/><line x1="519" y1="6" x2="519" y2="182" style="--j:8"/><line x1="583" y1="6" x2="583" y2="182" style="--j:9"/><line x1="647" y1="6" x2="647" y2="182" style="--j:10"/><line x1="711" y1="6" x2="711" y2="182" style="--j:11"/><line x1="7" y1="6" x2="711" y2="6" style="--j:0"/><line x1="7" y1="94" x2="711" y2="94" style="--j:1"/><line x1="7" y1="182" x2="711" y2="182" style="--j:2"/></g>
+<g class="k" style="--i:0"><path d="M168.65,22.69c11.93,0,20.65,6.79,21.47,17.59h-9.4c-.52-5.66-4.85-9.24-11.77-9.24-8.59,0-13.5,6.27-13.5,17.08s4.77,17.15,12.9,17.15c6.79,0,11.26-4.63,11.85-11.85h-12.74v-7.62h22.67v27.29h-7.01l-.45-8.13c-3.28,5.44-8.65,8.72-15.14,8.72-12.89,0-21.47-10.21-21.47-25.56s9.03-25.43,22.6-25.43Z"/></g><g class="k" style="--i:1"><path d="M300.02,25.16c13.87,0,23.11,10.43,23.11,26.18,0,14.91-9.24,24.82-23.11,24.82s-23.11-9.91-23.11-24.82c0-15.74,9.24-26.18,23.11-26.18ZM300.02,33.51c-8.72,0-13.71,6.57-13.71,17.83,0,10.36,4.99,16.4,13.71,16.4s13.73-6.04,13.73-16.4c0-11.26-5.07-17.83-13.73-17.83Z"/></g><g class="k" style="--i:2"><path d="M427.15,25.16c13.86,0,23.11,10.43,23.11,26.18,0,14.91-9.26,24.82-23.11,24.82s-23.12-9.91-23.12-24.82c0-15.74,9.26-26.18,23.12-26.18ZM427.15,33.51c-8.73,0-13.73,6.57-13.73,17.83,0,10.36,4.99,16.4,13.73,16.4s13.71-6.04,13.71-16.4c0-11.26-5.07-17.83-13.71-17.83Z"/></g><g class="k" style="--i:3"><path d="M573.5,51.55c0,14.39-8.35,23.94-20.8,23.94h-21.55V25.83h20.06c13.35,0,22.3,10.29,22.3,25.72ZM540.4,67.22h11.55c7.68,0,12.15-5.74,12.15-15.67,0-11.1-4.99-17.45-13.65-17.45h-10.05v33.11Z"/></g><g class="k" style="--i:4">
+    <path d="M44.35,113.38v49.66h-9.24v-49.66h9.24Z"/>
+    <rect x="20.67" y="156.13" width="36.72" height="6.9"/>
+    <rect x="20.67" y="113.18" width="36.72" height="6.9"/>
+  </g><g class="k" style="--i:5"><path d="M188.89,113.38v49.66h-9.61l-22.74-36.38v36.38h-9.25v-49.66h11.48l21.03,34.52v-34.52h9.08Z"/></g><g class="k" style="--i:6"><path d="M321.19,139.1c0,14.39-8.35,23.94-20.79,23.94h-21.55v-49.66h20.06c13.35,0,22.29,10.29,22.29,25.72ZM288.09,154.77h11.56c7.67,0,12.15-5.74,12.15-15.67,0-11.1-4.99-17.45-13.65-17.45h-10.07v33.11Z"/></g><g class="k" style="--i:7">
+    <path d="M431.81,113.38v49.66h-9.24v-49.66h9.24Z"/>
+    <rect x="408.79" y="156.13" width="36.72" height="6.9"/>
+    <rect x="408.79" y="113.18" width="36.72" height="6.9"/>
+  </g><g class="k" style="--i:8"><path d="M565.4,163.04l-3.72-11.1h-18.79l-3.58,11.1h-9.77l17.59-49.66h10.43l17.53,49.66h-9.7ZM545.34,144.48h13.87l-7-21.11-6.87,21.11Z"/></g><g class="k" style="--i:9"><path d="M701.23,113.38v49.66h-9.61l-22.74-36.38v36.38h-9.24v-49.66h11.48l21.03,34.52v-34.52h9.08Z"/></g>
+<circle class="die d1" cx="39.03" cy="50.63" r="13.83"/><circle class="die d2" cx="680.44" cy="48.19" r="13.83"/>
+<circle class="hole h1" cx="39.03" cy="50.63" r="13.83"/><circle class="hole h2" cx="680.44" cy="48.19" r="13.83"/></g>
+</svg></figure>
+      <p class="after js-split">Two holes frame it, punched in the margin exactly where a file punch lands, one over the first letter of INDIAN, one over the last. They mark the full width of the name, the way punch holes mark the width of a file.</p>
+      <p class="js-split">Filled in block letters, one character per box. Punched, and ready to file.</p>
+      <p class="eyebrow eyebrow--sub js-type">Item 02b · Variation</p>
+      <h2 class="js-split">The name, walking.</h2>
+      <p class="js-split">GOOD steps down one side, INDIAN down the other: left foot, right foot, on the same grid of square boxes. A punch hole at the start of the walk and another near the end.</p>
+      <div class="pair">
+      <p class="label pair__l1">Secondary wordmark logo</p>
+      <p class="label pair__l2 pair__primary" aria-hidden="true">Primary wordmark logo</p>
+      <figure class="agenda__media agenda__media--logo agenda__media--stepped"><svg class="logo-typed" viewBox="0 0 404 515" aria-label="Good Indian">
+<g class="sheet"><g class="grid" fill="none"><line x1="14.26" y1="6.66" x2="14.26" y2="497.86" style="--j:0"/><line x1="76.50" y1="6.66" x2="76.50" y2="497.86" style="--j:1"/><line x1="138.75" y1="6.66" x2="138.75" y2="497.86" style="--j:2"/><line x1="201.00" y1="6.66" x2="201.00" y2="497.86" style="--j:3"/><line x1="263.25" y1="6.66" x2="263.25" y2="497.86" style="--j:4"/><line x1="325.50" y1="6.66" x2="325.50" y2="497.86" style="--j:5"/><line x1="387.75" y1="6.66" x2="387.75" y2="497.86" style="--j:6"/><line x1="14.26" y1="6.66" x2="387.75" y2="6.66" style="--j:0"/><line x1="14.26" y1="68.06" x2="387.75" y2="68.06" style="--j:1"/><line x1="14.26" y1="129.46" x2="387.75" y2="129.46" style="--j:2"/><line x1="14.26" y1="190.86" x2="387.75" y2="190.86" style="--j:3"/><line x1="14.26" y1="252.26" x2="387.75" y2="252.26" style="--j:4"/><line x1="14.26" y1="313.66" x2="387.75" y2="313.66" style="--j:5"/><line x1="14.26" y1="375.06" x2="387.75" y2="375.06" style="--j:6"/><line x1="14.26" y1="436.46" x2="387.75" y2="436.46" style="--j:7"/><line x1="14.26" y1="497.86" x2="387.75" y2="497.86" style="--j:8"/></g>
+<g class="k" style="--i:0"><path d="M110.21,71.65c11.5,0,19.9,6.54,20.69,16.96h-9.06c-.51-5.46-4.67-8.91-11.35-8.91-8.28,0-13.01,6.04-13.01,16.46s4.6,16.53,12.43,16.53c6.54,0,10.85-4.46,11.42-11.42h-12.28v-7.34h21.84v26.3h-6.76l-.43-7.83c-3.16,5.24-8.34,8.4-14.59,8.4-12.42,0-20.69-9.84-20.69-24.64s8.71-24.51,21.78-24.51Z"/></g><g class="k" style="--i:4"><path d="M49.03,135.44v47.86h-8.91v-47.86h8.91Z"/><rect x="26.84" y="176.64" width="35.39" height="6.65"/><rect x="26.84" y="135.25" width="35.39" height="6.65"/></g><g class="k" style="--i:1"><path d="M173.09,134.79c13.37,0,22.27,10.06,22.27,25.23,0,14.37-8.91,23.92-22.27,23.92s-22.27-9.55-22.27-23.92c0-15.17,8.91-25.23,22.27-25.23ZM173.09,142.84c-8.4,0-13.22,6.33-13.22,17.18,0,9.98,4.81,15.81,13.22,15.81s13.23-5.82,13.23-15.81c0-10.85-4.89-17.18-13.23-17.18Z"/></g><g class="k" style="--i:5"><path d="M128.53,195.76v47.86h-9.27l-21.91-35.06v35.06h-8.92v-47.86h11.07l20.27,33.27v-33.27h8.77Z"/></g><g class="k" style="--i:2"><path d="M233.13,195.12c13.37,0,22.27,10.06,22.27,25.23,0,14.37-8.91,23.92-22.27,23.92s-22.27-9.55-22.27-23.92c0-15.17,8.91-25.23,22.27-25.23ZM233.13,203.17c-8.4,0-13.22,6.33-13.22,17.18,0,9.98,4.81,15.81,13.22,15.81s13.23-5.82,13.23-15.81c0-10.85-4.89-17.18-13.23-17.18Z"/></g><g class="k" style="--i:6"><path d="M193.51,282.29c0,13.87-8.05,23.07-20.05,23.07h-20.77v-47.86h19.33c12.86,0,21.49,9.92,21.49,24.79ZM161.6,297.38h11.13c7.4,0,11.71-5.53,11.71-15.1,0-10.7-4.81-16.82-13.15-16.82h-9.69v31.91Z"/></g><g class="k" style="--i:3"><path d="M315.27,282.29c0,13.87-8.05,23.07-20.05,23.07h-20.76v-47.86h19.33c12.86,0,21.48,9.92,21.48,24.79ZM283.37,297.38h11.14c7.39,0,11.71-5.53,11.71-15.1,0-10.7-4.81-16.82-13.15-16.82h-9.7v31.91Z"/></g><g class="k" style="--i:7"><path d="M237.62,319.33v47.86h-8.91v-47.86h8.91Z"/><rect x="215.44" y="360.53" width="35.39" height="6.65"/><rect x="215.44" y="319.14" width="35.39" height="6.65"/></g><g class="k" style="--i:8"><path d="M307.48,428.59l-3.6-10.7h-18.1l-3.45,10.7h-9.41l16.96-47.86h10.07l16.88,47.86h-9.34ZM288.15,410.7h13.37l-6.76-20.34-6.61,20.34Z"/></g><g class="k" style="--i:9"><path d="M376.65,442.47v47.86h-9.26l-21.92-35.06v35.06h-8.91v-47.86h11.07l20.27,33.27v-33.27h8.76Z"/></g>
+<circle class="die d1" cx="45.38" cy="37.36" r="13.33"/><circle class="die d2" cx="356.6" cy="343.16" r="13.33"/>
+<circle class="hole h1" cx="45.38" cy="37.36" r="13.33"/><circle class="hole h2" cx="356.6" cy="343.16" r="13.33"/></g>
+</svg></figure>
+      <img class="pair__img pair__primary" src="assets/brand/wordmark.svg" alt="Good Indian primary wordmark" aria-hidden="true">
+      <p class="usage"><span>Usage</span>Secondary expression only: motion, pattern, packaging sides, social. Never where the name must be read for the first time.</p>
+      </div>
+      <p class="eyebrow eyebrow--sub js-type">Item 02c · Initialled</p>
+      <h2 class="js-split">Initialled. Two holes, punched down the spine.</h2>
+      <p class="js-split">The shortest form of the name, like initials in a margin. The same two holes, turned on their side: one as the dot of the i, one below the G, stacked on a single vertical axis, punched down the spine.</p>
+      <p class="usage usage--show"><span>Show</span>Gi deboss on insole and heel; favicon; booklet cover.</p>
+      <div class="trio">
+      <div class="symbol">
+        <p class="label">Symbol</p>
+        <svg class="gi" viewBox="0 0 1080 1080" role="img" aria-label="Good Indian Gi symbol">
+          <path class="gi__i" fill="#302666" d="M874.24,355.62v388.31c0,1.88-1.52,3.4-3.4,3.4h-82.43c-1.88,0-3.4-1.52-3.4-3.4v-388.31c0-1.88,1.52-3.4,3.4-3.4h82.43c1.88,0,3.4,1.52,3.4,3.4Z"/>
+          <path class="gi__g" fill="#302666" d="M454.31,170.4c99.92,0,179.7,42.66,217.2,114.94,11.96,23.05,19.62,49.12,22.27,77.78.19,2.04-1.48,3.9-3.52,3.9h-98.16c-1.67,0-3-1.29-3.19-2.94-3.43-29.97-16.53-54.53-37.84-71.85-22.54-18.33-54.27-28.56-93.47-28.56-95.74,0-150.64,69.98-150.64,190.76s53.29,191.49,144.05,191.49c74.81,0,139.3-39.27,132.63-129.05-.14-1.83-1.75-3.44-3.59-3.44h-135.67c-1.88,0-3.4-1.52-3.4-3.4v-78.11c0-1.88,1.52-3.4,3.4-3.4h246.32c1.88,0,3.4,1.52,3.4,3.4v312.03c0,1.88-1.52,3.4-3.4,3.4h-71.44c-1.88,0-3.41-1.53-3.4-3.41l.33-103.07c-24.25,71.11-101.94,99.18-174.41,99.18-144.05,0-239.8-114.19-239.8-285.62s100.79-284.01,252.32-284.01Z"/>
+          <circle class="gi__h" fill="#9b4121" cx="829.62" cy="219.06" r="48.66"/>
+          <circle class="gi__h" fill="#9b4121" cx="654.4" cy="860.08" r="48.66"/>
+        </svg>
+      </div>
+      <div class="trio__item trio__later" aria-hidden="true">
+        <p class="label">Primary wordmark logo</p>
+        <img class="trio__primary" src="assets/brand/wordmark.svg" alt="Good Indian primary wordmark">
+      </div>
+      <div class="trio__item trio__later" aria-hidden="true">
+        <p class="label">Secondary wordmark logo</p>
+        <img class="trio__secondary" src="assets/brand/stepped-brand.svg" alt="Good Indian secondary stepped wordmark">
+      </div>
+      </div>
+      </div>
+    </div>
+  </section>
+  <section class="agenda agenda--approval agenda--attested" id="attested">
+    <div class="agenda__inner">
+      <p class="eyebrow js-type">Item 03 · Attested</p>
+      <div class="agenda__copy">
+      <h2 class="js-split">The signature of the brand is a stamp.</h2>
+      <p class="js-split">In India, you vouch for a document by signing across it and stamping it. So we do the same for every pair: specs on the flap, a real signature, a real stamp, pressed by hand.</p>
+      <p class="js-split">The only mark allowed to be imperfect, because it’s the only one made by hand, on every box.</p>
+      <div class="stamps" aria-label="Good Indian stamps">
+        <div class="slot a"><img src="assets/brand/stamp-a.svg" style="--r:-4deg" alt="Good Indian stamp"></div>
+        <div class="slot b"><img src="assets/brand/stamp-b.svg" style="--r:3deg" alt="Good Indian stamp, second impression"></div>
+      </div>
+      <figure class="received"><img src="assets/brand/received-stamp.svg" alt="Gi, Good Indian, Received: the file stamp lockup"></figure>
+      <p class="sign js-split">Inspected. Signed. Stamped. A pair isn’t ready until it’s attested.</p>
+      </div>
+    </div>
+  </section>
+  <section class="agenda agenda--approval" id="colours">
+    <div class="agenda__inner">
+      <p class="eyebrow js-type">Item 04 · As discussed</p>
+      <div class="agenda__copy">
+      <h2 class="js-split">Colours from the desk, not the mood board.</h2>
+      <figure class="palette"><svg class="colours" role="img" aria-label="Good Indian colour palette: Manila and Xerox white, stamp-pad violet, lal fita red, leather brown, almirah green" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 322 1920 758">
+  
+  <defs>
+    <style>
+      .cl0, .cl1, .cl2 {
+        fill: #f7f5ef;
+      }
+
+      .cl0, .cl3, .cl4 {
+        font-size: 27px;
+      }
+
+      .cl0, .cl4 {
+        letter-spacing: .06em;
+      }
+
+      .cl5, .cl6 {
+        fill: #2e1c66;
+      }
+
+      .cl5, .cl7 {
+        font-family: GravesendSans-Medium, 'Gravesend Sans';
+        font-weight: 500;
+      }
+
+      .cl8 {
+        letter-spacing: .06em;
+      }
+
+      .cl8, .cl9, .cl10 {
+        font-size: 41.15px;
+      }
+
+      .cl9, .cl10 {
+        letter-spacing: .06em;
+      }
+
+      .cl11 {
+        fill: #391c17;
+      }
+
+      .cl1 {
+        stroke: #d1d3d4;
+        stroke-miterlimit: 10;
+      }
+
+      .cl10, .cl12 {
+        fill: #fff;
+      }
+
+      .cl13 {
+        fill: #98b0a9;
+      }
+
+      .cl14 {
+        fill: #9b3e0b;
+      }
+
+      .cl3 {
+        letter-spacing: .06em;
+      }
+    </style>
+  </defs>
+  
+  <rect class="cl11" x="834.83" y="576.34" width="757.63" height="249.69" transform="translate(1914.8291 -512.456) rotate(90)"/>
+  <rect class="cl13" x="1266.28" y="426.28" width="757.63" height="549.82" transform="translate(2346.2757 -943.9025) rotate(90)"/>
+  <rect class="cl6" x="271.11" y="576.34" width="757.63" height="249.69" transform="translate(1351.1079 51.2653) rotate(90)"/>
+  <rect class="cl14" x="553.45" y="576.34" width="757.63" height="249.69" transform="translate(1633.4489 -231.0757) rotate(90)"/>
+  <rect class="cl1" x="-134.39" y="456.77" width="757.63" height="488.84" transform="translate(945.61 456.77) rotate(90)"/>
+  <g>
+    <path class="cl12" d="M656.59,400.11l3.17,2.2c-1.69,2.81-2.64,6.41-2.61,9.76.03,3.68,1.43,6.17,3.83,6.22,2.21.05,3.03-1.43,3.92-5.3l.79-3.48c1.28-5.64,3.63-8.24,7.5-8.26,4.28-.02,7.19,4.28,7.23,10.09.02,3.83-1.14,7.55-2.82,10.28l-3.16-2.07c1.42-2.32,2.32-4.99,2.3-7.83-.04-3.62-1.32-6.14-3.66-6.12-2.04.02-3.04,1.65-3.83,5.11l-.84,3.71c-1.26,5.6-3.4,8.06-7.42,8.08-4.47.02-7.51-4.3-7.53-10.6-.01-4.28,1.19-8.72,3.13-11.79Z"/>
+    <path class="cl12" d="M676.4,436.73v-9.2l3.72-.02v22.44h-3.72v-9.19h-22.62v-4.03h22.62Z"/>
+    <path class="cl12" d="M681.17,465.75l-27.41,14.79v-4.38l5.79-3.05v-14.83l-5.79-3.09v-4.47l27.41,15.03ZM662.94,471.3l10.58-5.59-10.58-5.62v11.21Z"/>
+    <path class="cl12" d="M672.51,490.74h-18.74v-4.05h26.33v4.06l-19.55,10.54,19.55,10.67v3.96h-26.33v-4.05h18.69l-19.36-10.53,19.4-10.6Z"/>
+    <path class="cl12" d="M680.12,526.02v12.03c0,5.75-3.23,9.57-8.49,9.57s-8.45-3.58-8.45-9.35v-8.18h-9.4v-4.07h26.34ZM666.81,538.09c0,3.31,1.77,5.37,4.82,5.37s4.82-2.06,4.82-5.37v-7.99h-9.64v7.99Z"/>
+    <path class="cl12" d="M668.56,553.92v9.95h-3.38v-9.95h3.38Z"/>
+    <path class="cl12" d="M680.12,571.95v12.03c0,5.75-3.23,9.57-8.49,9.57s-8.45-3.58-8.45-9.35v-8.18h-9.4v-4.07h26.34ZM666.81,584.01c0,3.32,1.77,5.37,4.82,5.37s4.82-2.06,4.82-5.37v-7.99h-9.64v7.99Z"/>
+    <path class="cl12" d="M681.17,609.52l-27.41,14.79v-4.38l5.79-3.05v-14.83l-5.79-3.09v-4.47l27.41,15.03ZM662.94,615.07l10.58-5.59-10.58-5.62v11.21Z"/>
+    <path class="cl12" d="M680.12,630.46l.03,8.95c.03,9.53-5.69,15.14-13.24,15.14s-13.13-5.62-13.13-15.14v-8.95h26.34ZM657.48,639.4c.02,7.55,3.88,11.09,9.42,11.09s9.51-3.54,9.55-11.09l.02-4.89h-18.99v4.89Z"/>
+    <path class="cl12" d="M680.12,672.31v4.54l-19.54,9.79,19.54,9.75v4.44l-27.41-14.14,27.41-14.37Z"/>
+    <path class="cl12" d="M680.12,706.95v4.07h-26.34v-4.07h26.34Z"/>
+    <path class="cl12" d="M666.94,719.63c7.62,0,13.66,6.04,13.66,14.09s-6.04,14.12-13.66,14.12-13.67-6.04-13.67-14.12,6.07-14.09,13.67-14.09ZM666.93,743.78c5.61,0,9.87-4.38,9.87-10.07s-4.25-10.04-9.87-10.04-9.84,4.38-9.84,10.04,4.25,10.07,9.84,10.07Z"/>
+    <path class="cl12" d="M680.12,756.46v4.07l-22.62-.02v14.84h-3.72v-18.89h26.34Z"/>
+    <path class="cl12" d="M680.12,782.71v20.61h-3.7v-16.56h-6.74l-.02,12.03h-3.6v-12.03h-8.57v16.58h-3.72v-20.63h26.34Z"/>
+    <path class="cl12" d="M676.4,818.26v-9.2l3.72-.02v22.44h-3.72v-9.19h-22.62v-4.03h22.62Z"/>
+    <path class="cl2" d="M634.22,404.93v-6.04l2.44-.02v14.72h-2.44v-6.03h-14.84v-2.64h14.84Z"/>
+    <path class="cl2" d="M636.65,418.35v2.67h-6.86v10.06h6.86v2.67h-17.28v-2.67l7.99-.03v-10.04h-7.99v-2.67h17.28Z"/>
+    <path class="cl2" d="M636.65,440.4v13.52h-2.43v-10.86h-4.42v7.89h-2.37v-7.89h-5.62v10.88h-2.44v-13.53h17.28Z"/>
+    <path class="cl2" d="M628.01,467.22c5.01,0,8.93,3.98,8.93,9.2,0,2.81-1.12,5.32-3.07,7.1l-1.61-2.05c1.41-1.32,2.18-3.1,2.18-5.06,0-3.67-2.72-6.54-6.42-6.54s-6.44,2.87-6.44,6.54c0,2.03.77,3.79,2.21,5.12l-1.57,2.07c-2-1.83-3.14-4.3-3.14-7.19,0-5.23,3.9-9.2,8.93-9.2Z"/>
+    <path class="cl2" d="M628.01,487.71c5,0,8.96,3.96,8.96,9.25s-3.96,9.26-8.96,9.26-8.96-3.96-8.96-9.26,3.98-9.25,8.96-9.25ZM628.01,503.55c3.68,0,6.47-2.87,6.47-6.6s-2.79-6.58-6.47-6.58-6.45,2.87-6.45,6.58,2.79,6.6,6.45,6.6Z"/>
+    <path class="cl2" d="M636.65,511.87v2.67h-14.84s0,9.72,0,9.72h-2.44v-12.39h17.28Z"/>
+    <path class="cl2" d="M628.01,527.29c5,0,8.96,3.96,8.96,9.25s-3.96,9.26-8.96,9.26-8.96-3.96-8.96-9.26,3.98-9.25,8.96-9.25ZM628.01,543.13c3.68,0,6.47-2.87,6.47-6.6s-2.79-6.58-6.47-6.58-6.45,2.87-6.45,6.58,2.79,6.6,6.45,6.6Z"/>
+    <path class="cl2" d="M627.68,551.13h8.97v2.68h-8.97c-3.87,0-6.03,1.66-6.03,5.3s2.16,5.3,6.01,5.3h8.99v2.71h-8.99c-5.27,0-8.49-2.74-8.49-8.02s3.19-7.99,8.51-7.99Z"/>
+    <path class="cl2" d="M619.38,584.39l7.62-8.26h-7.62v-2.67h17.28v8.1c0,3.77-1.85,6.3-5.2,6.3s-5.12-2.31-5.12-6.1v-1.44l-6.96,7.89v-3.82ZM628.65,576.13v5.64c0,1.99.89,3.36,2.8,3.36s2.8-1.37,2.8-3.36v-5.64h-5.6Z"/>
+    <path class="cl2" d="M628.01,601.24c5,0,8.96,3.96,8.96,9.25s-3.96,9.26-8.96,9.26-8.96-3.96-8.96-9.26,3.98-9.25,8.96-9.25ZM628.01,617.08c3.68,0,6.47-2.87,6.47-6.6s-2.79-6.58-6.47-6.58-6.45,2.87-6.45,6.58,2.79,6.6,6.45,6.6Z"/>
+    <path class="cl2" d="M636.65,625.41v13h-2.43v-10.35h-4.41v7.36h-2.37v-7.36h-8.06v-2.66h17.28Z"/>
+    <path class="cl2" d="M637.34,659.4l-17.98,9.7v-2.87l3.8-2v-9.73l-3.8-2.02v-2.93l17.98,9.86ZM625.39,663.04l6.94-3.67-6.94-3.68v7.35Z"/>
+    <path class="cl2" d="M636.65,673.14v7.89c0,3.77-2.12,6.28-5.57,6.28s-5.54-2.35-5.54-6.13v-5.36h-6.17v-2.67h17.28ZM627.92,681.05c0,2.17,1.16,3.53,3.16,3.53s3.16-1.35,3.16-3.53v-5.24h-6.33v5.24Z"/>
+    <path class="cl2" d="M636.65,692.8v7.89c0,3.77-2.12,6.28-5.57,6.28s-5.54-2.35-5.54-6.13v-5.36h-6.17v-2.67h17.28ZM627.92,700.71c0,2.17,1.16,3.53,3.16,3.53s3.16-1.35,3.16-3.53v-5.24h-6.33v5.24Z"/>
+    <path class="cl2" d="M619.38,723.39l7.62-8.26h-7.62v-2.67h17.28v8.1c0,3.77-1.85,6.3-5.2,6.3s-5.12-2.31-5.12-6.1v-1.44l-6.96,7.89v-3.82ZM628.65,715.12v5.64c0,1.99.89,3.36,2.8,3.36s2.8-1.37,2.8-3.36v-5.64h-5.6Z"/>
+    <path class="cl2" d="M628.01,731.41c5,0,8.96,3.96,8.96,9.25s-3.96,9.26-8.96,9.26-8.96-3.96-8.96-9.26,3.98-9.25,8.96-9.25ZM628.01,747.25c3.68,0,6.47-2.87,6.47-6.6s-2.79-6.58-6.47-6.58-6.45,2.87-6.45,6.58,2.79,6.6,6.45,6.6Z"/>
+    <path class="cl2" d="M636.65,752.41v2.98l-12.82,6.42,12.82,6.4v2.91l-17.98-9.28,17.98-9.43Z"/>
+    <path class="cl2" d="M637.34,779.68l-17.98,9.7v-2.87l3.8-2v-9.73l-3.8-2.02v-2.93l17.98,9.86ZM625.39,783.32l6.94-3.67-6.94-3.68v7.35Z"/>
+    <path class="cl2" d="M636.65,793.43v2.67h-14.84s0,9.72,0,9.72h-2.44v-12.39h17.28Z"/>
+    <path class="cl2" d="M622.34,810.73v3.06h-2.97v-3.06h2.97Z"/>
+  </g>
+  <g>
+    <path class="cl12" d="M935.07,400.66l3.17,2.2c-1.69,2.81-2.64,6.41-2.61,9.76.03,3.68,1.43,6.17,3.83,6.22,2.21.05,3.03-1.43,3.92-5.3l.79-3.48c1.28-5.64,3.63-8.24,7.5-8.26,4.28-.02,7.19,4.28,7.23,10.09.02,3.83-1.14,7.55-2.82,10.28l-3.16-2.07c1.42-2.32,2.32-4.99,2.3-7.83-.04-3.62-1.32-6.14-3.66-6.12-2.04.02-3.04,1.65-3.83,5.11l-.84,3.71c-1.26,5.6-3.4,8.06-7.42,8.08-4.47.02-7.51-4.3-7.53-10.6-.01-4.28,1.19-8.72,3.13-11.79Z"/>
+    <path class="cl12" d="M958.6,431.35v20.61h-3.7v-16.56h-6.74l-.02,12.03h-3.6v-12.03h-8.57v16.58h-3.72v-20.63h26.34Z"/>
+    <path class="cl12" d="M959.65,471.19l-27.41,14.79v-4.38l5.79-3.05v-14.83l-5.79-3.09v-4.47l27.41,15.03ZM941.42,476.74l10.58-5.59-10.58-5.62v11.21Z"/>
+    <path class="cl12" d="M958.6,492.13v4.07l-22.62-.02v14.84h-3.72v-18.89h26.34Z"/>
+    <path class="cl12" d="M958.6,518.38v4.07h-26.34v-4.07h26.34Z"/>
+    <path class="cl12" d="M958.59,532.58v4.06l-20.46,16.24h20.47v4.05h-26.34v-4.04l20.42-16.24h-20.42v-4.07h26.33Z"/>
+    <path class="cl12" d="M945.4,565.54c7.61,0,13.68,5.99,13.68,14.04,0,4.5-1.82,8.34-4.71,10.93l-2.46-3.12c2.09-1.86,3.36-4.62,3.36-7.82,0-5.68-4.25-9.99-9.85-9.99s-9.83,4.36-9.83,10.04c0,2.96,1.31,5.98,3.7,7.97h6.26v4.07h-7.58c-3.64-2.66-6.19-7.06-6.19-12.03,0-8.05,6.04-14.09,13.62-14.09Z"/>
+    <path class="cl12" d="M947.04,598.54v9.95h-3.38v-9.95h3.38Z"/>
+    <path class="cl12" d="M958.59,612.01v4.47l-18.27,7.12,19,8.07-19,8.05,18.27,7.26v4.41l-27.33-11.69,19.58-8.03-19.58-8.05,27.33-11.61Z"/>
+    <path class="cl12" d="M959.65,666.36l-27.41,14.79v-4.38l5.79-3.05v-14.83l-5.79-3.09v-4.47l27.41,15.03ZM941.42,671.91l10.58-5.59-10.58-5.62v11.21Z"/>
+    <path class="cl12" d="M946.2,693.66l12.4-9.79v4.97l-9.49,7.25,9.49,7.25v4.97l-12.4-9.79-13.92,11.05v-4.98l11.07-8.5-11.07-8.5v-4.97l13.92,11.04Z"/>
+    <path class="cl12" d="M932.26,746.06l11.62-12.59h-11.62v-4.07h26.34v12.36c0,5.75-2.81,9.6-7.93,9.6s-7.8-3.52-7.8-9.3v-2.2l-10.6,12.03v-5.83ZM946.4,733.47v8.6c0,3.04,1.35,5.12,4.27,5.12s4.27-2.09,4.27-5.12v-8.6h-8.54Z"/>
+    <path class="cl12" d="M944.92,759.18h13.68v4.09h-13.68c-5.9,0-9.19,2.53-9.19,8.09s3.29,8.09,9.16,8.09h13.71v4.14h-13.71c-8.04,0-12.95-4.17-12.95-12.22s4.87-12.18,12.97-12.18Z"/>
+    <path class="cl12" d="M931.94,803.03c-.01-4.28,1.19-8.72,3.13-11.79l3.17,2.2c-1.69,2.81-2.64,6.41-2.61,9.77.03,3.68,1.43,6.17,3.83,6.22,2.21.05,3.03-1.43,3.92-5.29l.79-3.48c1.28-5.64,3.63-8.25,7.5-8.27,4.28-.02,7.19,4.28,7.23,10.09.02,3.83-1.14,7.55-2.82,10.28l-3.16-2.07c1.42-2.32,2.32-4.99,2.3-7.83-.04-3.62-1.32-6.15-3.66-6.12-2.04.02-3.04,1.65-3.83,5.11l-.84,3.71c-1.26,5.6-3.4,8.05-7.42,8.07-4.47.02-7.51-4.3-7.53-10.6h0Z"/>
+    <path class="cl12" d="M954.88,827.86v-9.2l3.72-.02v22.44h-3.72v-9.19h-22.62v-4.03h22.62Z"/>
+    <path class="cl2" d="M915.13,398.87v2.93l-11.99,4.67,12.46,5.29-12.46,5.28,11.99,4.76v2.89l-17.93-7.67,12.84-5.27-12.84-5.28,17.93-7.62Z"/>
+    <path class="cl2" d="M915.14,428.91v2.67h-6.86v10.06h6.86v2.67h-17.28v-2.67l7.99-.03v-10.04h-7.99v-2.67h17.28Z"/>
+    <path class="cl2" d="M915.14,450.97v13.52h-2.43v-10.86h-4.42v7.89h-2.37v-7.89h-5.62v10.88h-2.44v-13.53h17.28Z"/>
+    <path class="cl2" d="M897.86,481.07l7.62-8.26h-7.62v-2.67h17.28v8.1c0,3.77-1.85,6.3-5.2,6.3s-5.12-2.31-5.12-6.1v-1.44l-6.96,7.89v-3.82ZM907.13,472.81v5.64c0,1.99.89,3.36,2.8,3.36s2.8-1.37,2.8-3.36v-5.64h-5.6Z"/>
+    <path class="cl2" d="M915.14,490.28v13.52h-2.43v-10.86h-4.42v7.89h-2.37v-7.89h-5.62v10.88h-2.44v-13.53h17.28Z"/>
+    <path class="cl2" d="M912.7,522.25v-6.04h2.44s0,14.7,0,14.7h-2.44v-6.02h-14.84v-2.64h14.84Z"/>
+    <path class="cl2" d="M915.14,535.67v2.67h-6.86v10.06h6.86v2.67h-17.28v-2.67l7.99-.03v-10.04h-7.99v-2.67h17.28Z"/>
+    <path class="cl2" d="M915.14,557.73v13.52h-2.43v-10.86h-4.42v7.89h-2.37v-7.89h-5.62v10.88h-2.44v-13.53h17.28Z"/>
+    <path class="cl2" d="M915.14,585.54v13h-2.43v-10.35h-4.41v7.36h-2.37v-7.36h-8.06v-2.66h17.28Z"/>
+    <path class="cl2" d="M915.14,603.65v2.67h-17.28v-2.67h17.28Z"/>
+    <path class="cl2" d="M915.14,612.97v2.67h-14.84s0,9.72,0,9.72h-2.44v-12.39h17.28Z"/>
+    <path class="cl2" d="M915.14,630.19v13.52h-2.43v-10.86h-4.42v7.89h-2.37v-7.89h-5.62v10.88h-2.44v-13.53h17.28Z"/>
+    <path class="cl2" d="M906.48,657c4.99,0,8.97,3.93,8.97,9.21,0,2.95-1.2,5.47-3.09,7.17l-1.61-2.04c1.37-1.22,2.2-3.03,2.2-5.13,0-3.72-2.79-6.55-6.46-6.55s-6.44,2.86-6.44,6.58c0,1.94.86,3.92,2.43,5.23h4.11v2.67h-4.97c-2.39-1.75-4.06-4.63-4.06-7.89,0-5.28,3.96-9.25,8.94-9.25Z"/>
+    <path class="cl2" d="M915.14,680.01v13.52h-2.43v-10.86h-4.42v7.89h-2.37v-7.89h-5.62v10.88h-2.44v-13.53h17.28Z"/>
+    <path class="cl2" d="M912.7,703.33v-6.04h2.44s0,14.7,0,14.7h-2.44v-6.02h-14.84v-2.64h14.84Z"/>
+    <path class="cl2" d="M899.71,715.03l2.08,1.44c-1.11,1.85-1.73,4.2-1.71,6.41.02,2.41.94,4.04,2.51,4.08,1.45.04,1.99-.94,2.57-3.47l.52-2.28c.84-3.7,2.38-5.41,4.92-5.42,2.81-.02,4.72,2.81,4.74,6.62.01,2.51-.75,4.95-1.85,6.74l-2.07-1.36c.93-1.52,1.52-3.27,1.51-5.14-.02-2.38-.87-4.03-2.4-4.02-1.33.01-2,1.08-2.51,3.35l-.55,2.44c-.83,3.67-2.23,5.28-4.87,5.3-2.93.01-4.92-2.82-4.94-6.95,0-2.81.78-5.72,2.05-7.73Z"/>
+    <path class="cl2" d="M915.14,743.81v7.89c0,3.77-2.12,6.28-5.57,6.28s-5.54-2.35-5.54-6.13v-5.36h-6.17v-2.67h17.28ZM906.41,751.72c0,2.17,1.16,3.53,3.16,3.53s3.16-1.35,3.16-3.53v-5.24h-6.33v5.24Z"/>
+    <path class="cl2" d="M906.16,763.14h8.97v2.68h-8.97c-3.87,0-6.03,1.66-6.03,5.3s2.16,5.3,6.01,5.3h8.99v2.71h-8.99c-5.27,0-8.49-2.74-8.49-8.02s3.19-7.99,8.51-7.99Z"/>
+    <path class="cl2" d="M915.13,785.47v2.66l-13.42,10.65h13.42v2.66h-17.28v-2.65l13.4-10.65h-13.4v-2.67h17.27Z"/>
+    <path class="cl2" d="M906.49,807.09c5.01,0,8.93,3.98,8.93,9.2,0,2.81-1.12,5.32-3.07,7.1l-1.61-2.05c1.41-1.32,2.18-3.1,2.18-5.06,0-3.67-2.72-6.54-6.42-6.54s-6.44,2.87-6.44,6.54c0,2.03.77,3.79,2.21,5.12l-1.57,2.07c-2-1.83-3.14-4.3-3.14-7.19,0-5.23,3.9-9.2,8.93-9.2Z"/>
+    <path class="cl2" d="M915.14,828.59v2.67h-6.86v10.06h6.86v2.67h-17.28v-2.67l7.99-.03v-10.04h-7.99v-2.67h17.28Z"/>
+    <path class="cl2" d="M915.14,850.65v13.52h-2.43v-10.86h-4.42v7.89h-2.37v-7.89h-5.62v10.88h-2.44v-13.53h17.28Z"/>
+    <path class="cl2" d="M915.14,869.82l.02,5.87c.02,6.25-3.73,9.93-8.69,9.93s-8.61-3.68-8.61-9.93v-5.87h17.28ZM900.29,875.68c.01,4.95,2.55,7.27,6.18,7.27s6.24-2.32,6.26-7.27v-3.2s-12.44,0-12.44,0v3.2Z"/>
+    <path class="cl2" d="M900.83,890.52v3.06h-2.97v-3.06h2.97Z"/>
+  </g>
+  <text class="cl7" transform="translate(1217.3667 396.3627) rotate(90)"><tspan class="cl10"><tspan x="0" y="0">leather brown</tspan></tspan><tspan class="cl0"><tspan x="0" y="34.4">from the annexure tabs.</tspan></tspan></text>
+  <text class="cl5" transform="translate(366.85 398.26) rotate(90)"><tspan class="cl8"><tspan x="0" y="0">Manila &amp; Xerox white</tspan></tspan><tspan class="cl4"><tspan x="0" y="32.4">the ground everything is written on.</tspan></tspan></text>
+  <text class="cl5" transform="translate(1476.3916 399.0376) rotate(90)"><tspan class="cl9"><tspan x="0" y="0">ALMIRAH GREEN</tspan></tspan><tspan class="cl3"><tspan x="0" y="32.4">Where every file ends up.</tspan></tspan></text>
+</svg></figure>
+      </div>
+    </div>
+  </section>
+  <section class="agenda agenda--approval" id="type">
+    <div class="agenda__inner">
+      <p class="eyebrow js-type">Item 05 · Typed, not designed</p>
+      <div class="agenda__copy">
+      <h2 class="js-split">One voice that types, one that signs.</h2>
+      <p class="js-split">A typewriter face for everything factual: specs, files, numbers. A clean architectural sans for the brand itself.</p>
+      <p class="sign js-split">When the ink bleeds, it’s <span class="bleed">on purpose.</span></p>
+      <figure class="palette specimen"><img src="assets/brand/fonts.svg" alt="Type specimen: Overused Grotesk, American Typewriter and Bolde Rough, uppercase, lowercase, numerals and symbols"></figure>
+      </div>
+    </div>
+  </section>
+  <section class="agenda agenda--approval" id="pfa">
+    <div class="agenda__inner">
+      <p class="eyebrow js-type">Item 06 · PFA</p>
+      <div class="agenda__copy">
+      <h2 class="js-split">Please find attached: one pair of shoes.</h2>
+      <p class="js-split">The box opens like a document should: facts first.</p>
+      <p class="sign js-split">Signed. Stamped. Tied with a cord and button, the way important papers are kept shut.</p>
+      <figure class="agenda__media agenda__media--wide"><img src="assets/img/pfa-box.webp" alt="Black tassel loafers with shoe trees beside the Good Indian box: violet base, buff lid with the wordmark"></figure>
+      <figure class="agenda__media agenda__media--wide" style="aspect-ratio:1920/1080"><img src="assets/img/pfa-open.jpg" alt="The Good Indian box open: a true-copy spec sheet and declaration tied shut with cord and two button closures, stamped Blake Stitched"></figure>
+      <div class="duo">
+        <figure class="agenda__media duo__item" style="--ar:1.0942;aspect-ratio:1312/1199"><img src="assets/img/pfa-pouches.webp" alt="Open Good Indian box with two sage dotted dust bags tied with violet cord"></figure>
+        <figure class="agenda__media duo__item" style="--ar:1.5;aspect-ratio:1536/1024"><img src="assets/img/pfa-dustbag.webp" alt="Sage dotted dust bag with the stepped Good Indian wordmark and a brown Oxford shoe"></figure>
+      </div>
+      </div>
+    </div>
+  </section>
+  <section class="agenda agenda--approval" id="annexures">
+    <div class="agenda__inner">
+      <p class="eyebrow js-type">Item 07 · Annexures A–E</p>
+      <div class="agenda__copy">
+      <h2 class="js-split">Everything he needs. Nothing he’ll skim.</h2>
+      <p class="js-split">Care, fit, the guarantee, returns, and his place in the first run, bound like a file, tabbed like a binder, separated by tracing-paper drawings of the last.</p>
+      <p class="sign js-split">The returns slip comes in triplicate. Because some habits are worth keeping.</p>
+      <figure class="agenda__media agenda__media--wide" style="aspect-ratio:1671/941"><img src="assets/img/annex-file.webp" alt="The Wearer's Copy file: cover stamped Received, opened to a tracing-paper drawing of the last and Annexure A, the care memo"></figure>
+      <figure class="agenda__media agenda__media--wide" style="aspect-ratio:1672/941"><img src="assets/img/annex-set.webp" alt="The full booklet laid out: cover, contents, tracing sheets and Annexures A to E, fit note, guarantee, triplicate returns slip and early access"></figure>
+      </div>
+    </div>
+  </section>
+  <section class="agenda agenda--approval" id="circulated">
+    <div class="agenda__inner">
+      <p class="eyebrow js-type">Item 08 · Circulated</p>
+      <div class="agenda__copy">
+      <h2 class="js-split">Seven posters. Seven pieces of the working day.</h2>
+      <p class="js-split">Each poster borrows one document from the paper trail he already lives in: the spreadsheet, the timesheet, the edit, the attestation, the seating plan, the register, the draft. Then it says one true thing about the shoe in that document’s language.</p>
+      <p class="sign js-split">No faces to aspire to. No slogans to live up to. Just the working day, and a shoe that keeps up with it.</p>
+      <div class="duo">
+        <figure class="agenda__media duo__item" style="--ar:0.6667;aspect-ratio:1024/1536"><img src="assets/img/poster-ink.webp" alt="Poster, the attestation: a brown Derby beside its violet scanned impression, file GI/26/LF-02, specs redacted, Ink still wet"></figure>
+        <figure class="agenda__media duo__item" style="--ar:0.7064;aspect-ratio:1054/1492"><img src="assets/img/poster-sheet.webp" alt="Poster, the spreadsheet: standard European last versus wider Indian last GI-01, a #### cell, Wide fit. Indian last."></figure>
+      </div>
+      <div class="duo">
+        <figure class="agenda__media duo__item" style="--ar:0.6667;aspect-ratio:1024/1536"><img src="assets/img/poster-attestation.webp" alt="Poster, the attestation: Product Attestation form for The Derby in oxblood, specs, last reference GI-01, signed and stamped"></figure>
+        <figure class="agenda__media duo__item" style="--ar:0.6667;aspect-ratio:1024/1536"><img src="assets/img/poster-walk.webp" alt="Poster: legs mid-stride in brown Derbies above a spreadsheet grid, Wide fit. Indian last."></figure>
+      </div>
+      <div class="duo">
+        <figure class="agenda__media duo__item" style="--ar:0.5628;aspect-ratio:941/1672"><img src="assets/img/poster-pocket.webp" alt="Workshop coat pocket with pencils, the Good Indian wordmark on the pocket flap and the Blake Stitched stamp below"></figure>
+        <figure class="agenda__media duo__item" style="--ar:0.7517;aspect-ratio:1087/1446"><img src="assets/img/poster-tracing.webp" alt="Brown cap-toe shoes under a sheet of tracing paper, Good Indian, file no. GI/26/LF-02"></figure>
+      </div>
+      <div class="duo">
+        <figure class="agenda__media duo__item" style="--ar:0.8003;aspect-ratio:1122/1402"><img src="assets/img/poster-folder.webp" alt="Manila file folder with the stepped Good Indian wordmark and file no. GI/26/LF-02, shoe photographs and fabric swatches tucked behind"></figure>
+        <figure class="agenda__media duo__item" style="--ar:0.6667;aspect-ratio:1024/1536"><img src="assets/img/poster-dailylog.webp" alt="Poster, the timesheet: rain-wet brown shoes on a metro platform above a daily log, 14 hours worn, break-in none, shoes changed 0"></figure>
+      </div>
+      <div class="duo">
+        <figure class="agenda__media duo__item" style="--ar:0.6667;aspect-ratio:1024/1536"><img src="assets/img/poster-edit.webp" alt="Poster, the edit: claims struck through and corrected in red, Genuine leather becomes Full-grain leather, Built to last a lifetime becomes Not built for resoling. We say so."></figure>
+        <figure class="agenda__media duo__item" style="--ar:0.7103;aspect-ratio:1057/1488"><img src="assets/img/poster-bars.webp" alt="Poster: highlighter bars reading Indian feet deserve better fits. No break-in. A wider life."></figure>
+      </div>
+      <div class="duo">
+        <figure class="agenda__media duo__item" style="--ar:0.8405;aspect-ratio:1681/2000"><img src="assets/img/poster-weatherproof.webp" alt="Poster: Weather proof, leather shoes, true copy file no. GI/26/DB-01/0214, specs and the Blake Stitched stamp"></figure>
+        <figure class="agenda__media duo__item" style="--ar:0.8405;aspect-ratio:1681/2000"><img src="assets/img/poster-leathershoes.webp" alt="Poster: Leather shoes, filled 2026, with the Gi, Good Indian, Attested lockup"></figure>
+      </div>
+      </div>
+    </div>
+  </section>
+  <section class="agenda agenda--approval" id="aob">
+    <div class="agenda__inner">
+      <p class="eyebrow js-type">Item 09 · Any other business</p>
+      <div class="agenda__copy">
+      <h2 class="js-split">That’s all for today.</h2>
+      <p class="js-split">Good Indian is a good shoe, made in India, for the way Indians actually live and work.</p>
+      <p class="sign js-split">Put them on. Walk a day. The name explains itself.</p>
+      <figure class="agenda__media agenda__media--wide" style="aspect-ratio:1351/1164"><img src="assets/img/shutter-end.webp" alt="The Good Indian Blake Stitched stamp painted on a violet roller shutter"></figure>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger, SplitText);
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* smooth, responsive scroll */
+const lenis = new Lenis({ lerp: reduced ? 1 : 0.1 });
+lenis.on('scroll', ScrollTrigger.update);
+gsap.ticker.add(t => lenis.raf(t * 1000));
+gsap.ticker.lagSmoothing(0);
+
+
+/* ---------- ink bleed letters (built before lines are split) ---------- */
+document.querySelectorAll('.bleed').forEach(b => {
+  b.innerHTML = [...b.textContent].map((c, k) => c === ' ' ? ' ' :
+    `<span class="l" style="--k:${k}">${c}<i class="a" aria-hidden="true">${c}</i><i class="b" aria-hidden="true">${c}</i><i class="c" aria-hidden="true">${c}</i></span>`).join('');
+});
+
+/* ---------- Figma-style line motion ---------- */
+const lines = [];
+document.querySelectorAll('.js-split').forEach(el => {
+  const s = SplitText.create(el, { type: 'lines', linesClass: 'line' });
+  s.lines.forEach(l => { l.innerHTML = `<span>${l.innerHTML}</span>`; lines.push(l); });
+});
+gsap.set(lines.map(l => l.firstChild), { yPercent: 110, rotate: 2, filter: 'blur(6px)', transformOrigin: '0% 100%' });
+
+
+const revealLine = l => {
+  if (l._in) return; l._in = true;
+  gsap.to(l.firstChild, { yPercent: 0, rotate: 0, filter: 'blur(0px)', duration: 1.2, ease: 'expo.out' });
+};
+
+// each eyebrow types itself, one key at a time
+document.querySelectorAll('.js-type').forEach(eb => {
+  const section = eb.closest('.agenda');
+  const ebText = eb.textContent; eb.textContent = '';
+  ScrollTrigger.create({
+    trigger: eb, start: 'top 92%', once: true,
+    onEnter: () => {
+      eb.classList.add('is-in');
+      const o = { n: 0 };
+      gsap.to(o, { n: ebText.length, duration: ebText.length * .045, ease: 'none',
+        onUpdate: () => eb.textContent = ebText.slice(0, Math.round(o.n)) });
+    }
+  });
+});
+
+// each line rises as it enters the viewport
+lines.forEach(l => ScrollTrigger.create({ trigger: l, start: 'top 92%', once: true, onEnter: () => revealLine(l) }));
+
+// parallax: the opening animation drifts up slower than the page
+if (!reduced) gsap.to('.hero iframe', { yPercent: 30, ease: 'none',
+  scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+if (reduced) lines.forEach(revealLine);
+
+// media frames: Figma-style wipe up + settle
+document.querySelectorAll('.agenda__media').forEach(media => {
+  gsap.to(media, { clipPath: 'inset(0% 0 0 0)', duration: reduced ? 0 : 1.4, ease: 'expo.out',
+    scrollTrigger: { trigger: media, start: 'top 88%', once: true } });
+  const mimg = media.querySelector('img');
+  if (!mimg || media.classList.contains('agenda__media--wide') || media.classList.contains('duo__item')) return;
+  gsap.to(mimg, { scale: 1, duration: reduced ? 0 : 1.8, ease: 'expo.out',
+    scrollTrigger: { trigger: media, start: 'top 88%', once: true } });
+  if (!reduced) gsap.fromTo(mimg, { yPercent: -4 }, { yPercent: 4, ease: 'none',
+    scrollTrigger: { trigger: media, start: 'top bottom', end: 'bottom top', scrub: true } });
+});
+
+// Item 04: the palette is revealed left to right in one piece, so labels stay on their swatches
+document.querySelectorAll('.colours, .specimen img').forEach(pal => {
+  if (reduced) return;
+  gsap.set(pal, { clipPath: 'inset(0 100% 0 0)' });
+  ScrollTrigger.create({ trigger: pal, start: 'top 75%', once: true,
+    onEnter: () => gsap.to(pal, { clipPath: 'inset(0 0% 0 0)', duration: 1.6, ease: 'expo.inOut' }) });
+});
+
+// Item 03: the Received lockup is pressed onto the page as it scrolls in
+const rec = document.querySelector('.received img');
+if (rec && !reduced) {
+  gsap.set(rec, { opacity: 0, scale: 1.12, rotate: -2 });
+  ScrollTrigger.create({ trigger: rec, start: 'top 80%', end: 'bottom 20%',
+    onEnter: pressRec, onEnterBack: pressRec });
+}
+function pressRec() {
+  gsap.timeline()
+    .set(rec, { opacity: 0, scale: 1.12, rotate: -2, filter: 'contrast(1.25) brightness(.82)' })
+    .to(rec, { opacity: 1, scale: .99, rotate: 0, duration: .12, ease: 'power3.in' })
+    .to(rec, { scale: 1, filter: 'none', duration: .8, ease: 'expo.out' })
+    .to(rec.parentNode, { y: 3, duration: .07, yoyo: true, repeat: 1 }, '<');
+}
+
+// Item 03: stamps pressed whenever they scroll into view
+const stamps = document.querySelector('.stamps');
+const press = () => { stamps.classList.remove('run'); void stamps.offsetWidth; stamps.classList.add('run'); };
+if (!reduced) ScrollTrigger.create({ trigger: stamps, start: 'top 75%', end: 'bottom 25%', onEnter: press, onEnterBack: press });
+
+// Item 02c: Gi symbol, initialled then punched
+const gi = document.querySelector('.gi');
+if (reduced) document.querySelectorAll('.trio__later').forEach(el => el.classList.add('is-on'));
+if (gi && !reduced) {
+  gsap.set(gi.querySelectorAll('.gi__g,.gi__i'), { opacity: 0, y: -24 });
+  gsap.set(gi.querySelectorAll('.gi__h'), { opacity: 0, scale: .2 });
+  const giTl = gsap.timeline({ paused: true })
+    .to(gi.querySelector('.gi__g'), { opacity: 1, y: 0, duration: .5, ease: 'back.out(2)' })
+    .to(gi.querySelector('.gi__i'), { opacity: 1, y: 0, duration: .45, ease: 'back.out(2)' }, '-=.2')
+    .to(gi.querySelectorAll('.gi__h'), { opacity: 1, scale: 1, duration: .5, ease: 'back.out(3)', stagger: .18 }, '+=.25')
+    .call(() => later.forEach(el => { el.classList.add('is-on'); el.removeAttribute('aria-hidden'); }), null, '+=.2');
+  const later = [...document.querySelectorAll('.trio__later')];
+  const replay = () => { later.forEach(el => el.classList.remove('is-on')); giTl.restart(); };
+  ScrollTrigger.create({ trigger: gi, start: 'top 80%', end: 'bottom 20%', onEnter: replay, onEnterBack: replay });
+}
+
+// Item 02: the logo fills itself in whenever it scrolls into focus
+document.querySelectorAll('.logo-typed').forEach(logo => {
+  const after = logo.closest('.pair') ? [...logo.closest('.pair').querySelectorAll('.pair__primary')] : null;
+  const playLogo = () => {
+    if (after) after.forEach(a => { a.classList.remove('is-on'); a.setAttribute('aria-hidden', 'true'); });
+    logo.classList.remove('is-playing'); void logo.getBoundingClientRect(); logo.classList.add('is-playing');
+  };
+  // the primary wordmark appears only once the stepped animation has finished
+  if (after) logo.addEventListener('animationend', e => {
+    if (e.animationName === 'lt-gridfade') after.forEach(a => { a.classList.add('is-on'); a.removeAttribute('aria-hidden'); });
+  });
+  if (after && reduced) after.forEach(a => { a.classList.add('is-on'); a.removeAttribute('aria-hidden'); });
+  if (!reduced) ScrollTrigger.create({ trigger: logo, start: 'top 75%', end: 'bottom 25%', onEnter: playLogo, onEnterBack: playLogo });
+});
+</script>
+</body>
+</html>
