@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="1060" viewBox="0 0 1100 1060">
+<rect width="1100" height="1060" fill="#FFFFFF"/>
+<g transform="translate(20 0)">
+<defs><pattern id="ledgera" width="48" height="144" patternUnits="userSpaceOnUse" patternTransform="scale(1.0)">
+ <g fill="#131313"><circle cx="6" cy="132" r="2.2"/><circle cx="18" cy="132" r="2.2"/><circle cx="30" cy="132" r="2.2"/><circle cx="42" cy="132" r="2.2"/></g>
+ <g fill="none" stroke="#131313" stroke-width="2" stroke-linecap="round">
+ <path d="M3,108h10M19,108h10M35,108h10"/><path d="M3,78l6,12M15,78l6,12M27,78l6,12M39,78l6,12"/>
+ <path d="M3,65l10-10M3,55l10,10M19,65l10-10M19,55l10,10M35,65l10-10M35,55l10,10"/>
+ <path d="M3,36h10M8,41v-10M19,36h10M24,41v-10M35,36h10M40,41v-10"/><path d="M3,16h10M19,16h10M35,16h10"/><path d="M11,8h10M27,8h10M43,8h5M0,8h5"/></g></pattern><pattern id="grida" x="39.15789473684214" y="31.57894736842104" width="64" height="64" patternUnits="userSpaceOnUse" patternTransform="scale(0.95)">
+ <g fill="none" stroke="#131313" stroke-linecap="round"><path stroke-width="2" d="M3,32h10M19,32h10M35,32h10M51,32h10"/><path stroke-width="2.4" d="M26,38l12-12M26,26l12,12"/></g>
+ <g fill="#131313"><circle cx="32" cy="60" r="2"/><circle cx="32" cy="52" r="2"/><circle cx="32" cy="44" r="2"/><circle cx="32" cy="20" r="2"/><circle cx="32" cy="12" r="2"/><circle cx="32" cy="4" r="2"/></g></pattern>
+<clipPath id="csa"><path d="M250 60 C330 60 392 120 404 230 C414 330 406 410 384 470 C362 530 340 580 336 640 L336 700 C336 760 340 820 338 870 C334 935 300 962 250 962 C200 962 166 935 162 870 C160 820 162 760 164 700 L166 640 C164 580 146 530 126 470 C104 410 92 330 100 230 C110 120 170 60 250 60 Z"/></clipPath></defs>
+<path d="M250 60 C330 60 392 120 404 230 C414 330 406 410 384 470 C362 530 340 580 336 640 L336 700 C336 760 340 820 338 870 C334 935 300 962 250 962 C200 962 166 935 162 870 C160 820 162 760 164 700 L166 640 C164 580 146 530 126 470 C104 410 92 330 100 230 C110 120 170 60 250 60 Z" fill="#F4F2EC"/>
+<g clip-path="url(#csa)">
+ <path d="M0 0 H500 V515 C420 545 330 556 250 556 C170 556 80 545 0 515 Z" fill="#F4F2EC"/><path d="M0 0 H500 V515 C420 545 330 556 250 556 C170 556 80 545 0 515 Z" fill="url(#ledgera)"/>
+ <path d="M0 712 C80 700 170 696 250 696 C330 696 420 700 500 712 V1000 H0 Z" fill="#F4F2EC"/><path d="M0 712 C80 700 170 696 250 696 C330 696 420 700 500 712 V1000 H0 Z" fill="url(#grida)"/>
+ <path d="M0 515 C80 545 170 556 250 556 C330 556 420 545 500 515" fill="none" stroke="#131313" stroke-width="2"/>
+ <path d="M0 712 C80 700 170 696 250 696 C330 696 420 700 500 712" fill="none" stroke="#131313" stroke-width="3"/>
+</g>
+<path d="M250 60 C330 60 392 120 404 230 C414 330 406 410 384 470 C362 530 340 580 336 640 L336 700 C336 760 340 820 338 870 C334 935 300 962 250 962 C200 962 166 935 162 870 C160 820 162 760 164 700 L166 640 C164 580 146 530 126 470 C104 410 92 330 100 230 C110 120 170 60 250 60 Z" fill="none" stroke="#131313" stroke-width="4"/>
+<path d="M250 60 C330 60 392 120 404 230 C414 330 406 410 384 470 C362 530 340 580 336 640 L336 700 C336 760 340 820 338 870 C334 935 300 962 250 962 C200 962 166 935 162 870 C160 820 162 760 164 700 L166 640 C164 580 146 530 126 470 C104 410 92 330 100 230 C110 120 170 60 250 60 Z" fill="none" stroke="#131313" stroke-width="1.2" stroke-dasharray="5 6" transform="translate(250 511) scale(.955) translate(-250 -511)"/>
+<text x="250" y="625" text-anchor="middle" font-family="Courier New,monospace" font-size="15" letter-spacing="3" fill="#131313">GI-01</text>
+</g><g transform="translate(580 0)">
+<defs><pattern id="ledgerb" width="48" height="144" patternUnits="userSpaceOnUse" patternTransform="scale(1.0)">
+ <g fill="#131313"><circle cx="6" cy="132" r="2.2"/><circle cx="18" cy="132" r="2.2"/><circle cx="30" cy="132" r="2.2"/><circle cx="42" cy="132" r="2.2"/></g>
+ <g fill="none" stroke="#131313" stroke-width="2" stroke-linecap="round">
+ <path d="M3,108h10M19,108h10M35,108h10"/><path d="M3,78l6,12M15,78l6,12M27,78l6,12M39,78l6,12"/>
+ <path d="M3,65l10-10M3,55l10,10M19,65l10-10M19,55l10,10M35,65l10-10M35,55l10,10"/>
+ <path d="M3,36h10M8,41v-10M19,36h10M24,41v-10M35,36h10M40,41v-10"/><path d="M3,16h10M19,16h10M35,16h10"/><path d="M11,8h10M27,8h10M43,8h5M0,8h5"/></g></pattern><pattern id="gridb" x="39.15789473684214" y="31.57894736842104" width="64" height="64" patternUnits="userSpaceOnUse" patternTransform="scale(0.95)">
+ <g fill="none" stroke="#131313" stroke-linecap="round"><path stroke-width="2" d="M3,32h10M19,32h10M35,32h10M51,32h10"/><path stroke-width="2.4" d="M26,38l12-12M26,26l12,12"/></g>
+ <g fill="#131313"><circle cx="32" cy="60" r="2"/><circle cx="32" cy="52" r="2"/><circle cx="32" cy="44" r="2"/><circle cx="32" cy="20" r="2"/><circle cx="32" cy="12" r="2"/><circle cx="32" cy="4" r="2"/></g></pattern>
+<clipPath id="csb"><path d="M250 60 C330 60 392 120 404 230 C414 330 406 410 384 470 C362 530 340 580 336 640 L336 700 C336 760 340 820 338 870 C334 935 300 962 250 962 C200 962 166 935 162 870 C160 820 162 760 164 700 L166 640 C164 580 146 530 126 470 C104 410 92 330 100 230 C110 120 170 60 250 60 Z"/></clipPath></defs>
+<path d="M250 60 C330 60 392 120 404 230 C414 330 406 410 384 470 C362 530 340 580 336 640 L336 700 C336 760 340 820 338 870 C334 935 300 962 250 962 C200 962 166 935 162 870 C160 820 162 760 164 700 L166 640 C164 580 146 530 126 470 C104 410 92 330 100 230 C110 120 170 60 250 60 Z" fill="#F4F2EC"/>
+<g clip-path="url(#csb)">
+ <path d="M0 0 H500 V515 C420 545 330 556 250 556 C170 556 80 545 0 515 Z" fill="#eee056"/><path d="M0 0 H500 V515 C420 545 330 556 250 556 C170 556 80 545 0 515 Z" fill="url(#ledgerb)"/>
+ <path d="M0 712 C80 700 170 696 250 696 C330 696 420 700 500 712 V1000 H0 Z" fill="#99b1aa"/><path d="M0 712 C80 700 170 696 250 696 C330 696 420 700 500 712 V1000 H0 Z" fill="url(#gridb)"/>
+ <path d="M0 515 C80 545 170 556 250 556 C330 556 420 545 500 515" fill="none" stroke="#131313" stroke-width="2"/>
+ <path d="M0 712 C80 700 170 696 250 696 C330 696 420 700 500 712" fill="none" stroke="#131313" stroke-width="3"/>
+</g>
+<path d="M250 60 C330 60 392 120 404 230 C414 330 406 410 384 470 C362 530 340 580 336 640 L336 700 C336 760 340 820 338 870 C334 935 300 962 250 962 C200 962 166 935 162 870 C160 820 162 760 164 700 L166 640 C164 580 146 530 126 470 C104 410 92 330 100 230 C110 120 170 60 250 60 Z" fill="none" stroke="#131313" stroke-width="4"/>
+<path d="M250 60 C330 60 392 120 404 230 C414 330 406 410 384 470 C362 530 340 580 336 640 L336 700 C336 760 340 820 338 870 C334 935 300 962 250 962 C200 962 166 935 162 870 C160 820 162 760 164 700 L166 640 C164 580 146 530 126 470 C104 410 92 330 100 230 C110 120 170 60 250 60 Z" fill="none" stroke="#131313" stroke-width="1.2" stroke-dasharray="5 6" transform="translate(250 511) scale(.955) translate(-250 -511)"/>
+<text x="250" y="625" text-anchor="middle" font-family="Courier New,monospace" font-size="15" letter-spacing="3" fill="#131313">GI-01</text>
+</g>
+<g font-family="Courier New,monospace" font-size="14" letter-spacing="2" fill="#131313">
+<text x="270" y="1010" text-anchor="middle">MOULD · ONE COLOUR</text><text x="830" y="1010" text-anchor="middle">BRAND COLOUR REFERENCE</text>
+<text x="20" y="40">FOREFOOT · PATTERN 06 (LEDGER)   WAIST · PLAIN   HEEL · PATTERN 05 (GRID)</text></g>
+</svg>

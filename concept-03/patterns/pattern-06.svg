@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 363.24 360.61">
+  <!-- Generator: Adobe Illustrator 30.9.0, SVG Export Plug-In . SVG Version: 2.1.4 Build 52)  -->
+  <defs>
+    <style>
+      .st0, .st1 {
+        fill: none;
+      }
+
+      .st2 {
+        fill: #eee056;
+      }
+
+      .st3 {
+        fill: url(#ledger);
+      }
+
+      .st1 {
+        stroke: #131313;
+        stroke-linecap: round;
+        stroke-width: 2px;
+      }
+
+      .st4 {
+        fill: #131313;
+      }
+    </style>
+    <pattern id="ledger" x="0" y="0" width="48" height="144" patternTransform="translate(-4990.2061 -11101.5142) scale(.4369 -.4369)" patternUnits="userSpaceOnUse" viewBox="0 0 48 144">
+      <g>
+        <rect class="st0" width="48" height="144"/>
+        <g>
+          <circle class="st4" cx="6" cy="132" r="2.2"/>
+          <circle class="st4" cx="18" cy="132" r="2.2"/>
+          <circle class="st4" cx="30" cy="132" r="2.2"/>
+          <circle class="st4" cx="42" cy="132" r="2.2"/>
+        </g>
+        <g>
+          <path class="st1" d="M3,108h10M19,108h10M35,108h10"/>
+          <path class="st1" d="M3,78l6,12M15,78l6,12M27,78l6,12M39,78l6,12"/>
+          <path class="st1" d="M3,65l10-10M3,55l10,10M19,65l10-10M19,55l10,10M35,65l10-10M35,55l10,10"/>
+          <path class="st1" d="M3,36h10M8,41v-10M19,36h10M24,41v-10M35,36h10M40,41v-10"/>
+          <path class="st1" d="M3,16h10M19,16h10M35,16h10"/>
+          <path class="st1" d="M11,8h10M27,8h10M43,8h5M0,8h5"/>
+        </g>
+      </g>
+    </pattern>
+  </defs>
+  <rect class="st2" width="363.24" height="360.61"/>
+  <rect class="st3" width="363.24" height="360.61"/>
+</svg>
